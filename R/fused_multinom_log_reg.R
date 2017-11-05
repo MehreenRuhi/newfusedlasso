@@ -1,4 +1,4 @@
-fusedMultinomialLogistic <- function(x, y, lambda, 
+#fusedMultinomialLogistic <- function(x, y, lambda, 
                                      lambda.group = 0, groups = NULL, 
                                      class.weights = NULL, opts=NULL) {
   
