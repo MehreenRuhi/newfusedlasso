@@ -462,7 +462,7 @@ fusedMultinomialLogistic <- function(x, y, lambda,
         }
         pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
-        pens <- lambda2 * sum(abs(beta[2:p] - beta[1:(p-1)]))
+        pens <- lambda2 * sum((beta[2:p] - beta[1:(p-1)])^2)
       }
       
       funVal[iterStep] <- fun.beta + lambda * sum(abs(beta)) + pens
@@ -475,13 +475,13 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       
       if (tf == 0) {
         if (iterStep > 2) {
-          if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol) {
+          if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol) {
             break
           }
         }
       } else if (tf == 1) {
         if (iterStep > 2) {
-          if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= 
+          if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= 
                 opts$tol * funVal[iterStep - 1]) {
             break
           }
