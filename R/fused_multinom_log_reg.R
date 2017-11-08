@@ -453,7 +453,7 @@ fusedMultinomialLogistic <- function(x, y, lambda,
         for (k in 2:K) {
           for (t in 1:length(unique.groups[[k]])) {
             gr.idx <- which(groups[[k]] == unique.groups[[k]][t])
-            gr.p <- length(gr.idx)-1
+            gr.p <- length(gr.idx)
             if (gr.p > 1) {
               fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
          #     fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
