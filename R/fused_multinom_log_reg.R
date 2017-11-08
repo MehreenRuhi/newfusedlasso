@@ -456,16 +456,18 @@ fusedMultinomialLogistic <- function(x, y, lambda,
             gr.p <- length(gr.idx)
             if (gr.p > 1) {
               fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
-              group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
+              group.pen<-0
+       #       group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
             }
           }
         }
-        pens <- lambda2 * fused.pen + lambda.group * group.pen
+        pens <- group.pen * fused.pen 
+       # pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
         pens <- lambda2 * sum((beta[2:p] - beta[1:(p-1)])^2)
       }
       
-      funVal[iterStep] <- fun.beta + lambda * sum(abs(beta)) + pens
+      funVal[iterStep] <- fun.beta + lambda * sum((beta)^2) + pens
       
       if (bFlag) {
         break
