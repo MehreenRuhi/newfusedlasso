@@ -450,20 +450,20 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       # penalty-terms
       if (!is.null(groups)) {
         fused.pen <- group.pen <- 0
-        for (k in 2:K) {
+        for (k in 1:K) {
           for (t in 1:length(unique.groups[[k]])) {
             gr.idx <- which(groups[[k]] == unique.groups[[k]][t])
             gr.p <- length(gr.idx)
             if (gr.p > 1) {
-              fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
-         #     fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
-              group.pen<-0
-       #       group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
+            #  fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
+              fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
+            #  group.pen<-0
+              group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
             }
           }
         }
-        pens <- group.pen * fused.pen 
-       # pens <- lambda2 * fused.pen + lambda.group * group.pen
+       # pens <- group.pen * fused.pen 
+        pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
         pens <- lambda2 * sum((beta[2:p] - beta[1:(p-1)])^2)
       }
