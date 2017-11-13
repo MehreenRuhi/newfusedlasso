@@ -125,7 +125,7 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       stop("opts$rsL2 must be nonnegative")
     }
   } else {
-    rsL2 <- 0
+    rsL2 <- 1
   }
   
   #m1 <- sum(weight[which(p.flag)])
