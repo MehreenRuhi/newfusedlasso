@@ -455,8 +455,8 @@ fusedMultinomialLogistic <- function(x, y, lambda,
             gr.idx <- which(groups[[k]] == unique.groups[[k]][t])
             gr.p <- length(gr.idx)
             if (gr.p > 1) {
-            #  fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
-              fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
+              fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p+1)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
+            #  fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
             #  group.pen<-0
               group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
             }
