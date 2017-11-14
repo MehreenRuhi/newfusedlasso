@@ -450,12 +450,12 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       # penalty-terms
       if (!is.null(groups)) {
         fused.pen <- group.pen <- 0
-        for (k in 1:K) {
+        for (k in 2:K) {
           for (t in 1:length(unique.groups[[k]])) {
             gr.idx <- which(groups[[k]] == unique.groups[[k]][t])
             gr.p <- length(gr.idx)
             if (gr.p > 1) {
-              fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p+1)],k]-(2*beta[gr.idx[2:(gr.p)], k]) + beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
+              fused.pen <- fused.pen + sum((beta[gr.idx[3:(gr.p)],k]-(2*beta[gr.idx[2:(gr.p-1)], k]) + beta[gr.idx[1:(gr.p - 2)], k]) ^ 2)
             #  fused.pen <- fused.pen + sum((beta[gr.idx[2:(gr.p)], k] - beta[gr.idx[1:(gr.p - 1)], k]) ^ 2)
             #  group.pen<-0
               group.pen <- group.pen + sqrt(sum(beta[gr.idx, k] ^ 2) * gr.p)
@@ -477,8 +477,8 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       tf <- opts$tFlag
       
       if (tf == 0) {
-        if (iterStep > 2) {
-          if (( funVal[iterStep+1]- funVal[iterStep] + funVal[iterStep - 1] )^2 <= opts$tol) {
+        if (iterStep > 3) {
+          if (( funVal[iterStep]- funVal[iterStep-1] + funVal[iterStep - 2] )^2 <= opts$tol) {
          # if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol) {
             break
           }
