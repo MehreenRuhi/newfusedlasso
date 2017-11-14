@@ -478,7 +478,8 @@ fusedMultinomialLogistic <- function(x, y, lambda,
       
       if (tf == 0) {
         if (iterStep > 2) {
-          if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol) {
+          if (( funVal[iterStep+1]- funVal[iterStep] + funVal[iterStep - 1] )^2 <= opts$tol) {
+         # if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol) {
             break
           }
         }
