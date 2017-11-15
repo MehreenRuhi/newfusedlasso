@@ -335,7 +335,8 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
         }
         pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
-        pens <- lambda2 * sum(abs(b[2:p] - b[1:(p-1)]))
+        pens <- lambda2 * sum((b[2:p] - b[1:(p-1)])^2)
+        #pens <- lambda2 * sum(abs(b[2:p] - b[1:(p-1)]))
       }
       
       funVal[iterStep] <- as.double(crossprod(xby)) / (2) + lambda * sum(abs(b)) + pens
@@ -350,7 +351,8 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       
       if (tf == 0) {
         if (iterStep > 2) {
-          if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol) {
+          #if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol) {
+          if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol) {
             break
           }
         }
@@ -543,9 +545,10 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       # Compute the objective function value
       xby <- xb - y
       
+      #funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
+       # sum(abs(b)) * lambda + lambda2 * sum(abs( b[2:p] - b[1:(p-1)] ))
       funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
-        sum(abs(b)) * lambda + lambda2 * sum(abs( b[2:p] - b[1:(p-1)] ))
-      
+        sum(abs(b)) * lambda + lambda2 * sum(( b[2:p] - b[1:(p-1)] )^2)
       if (bFlag) {
         break
       }
@@ -554,7 +557,8 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       
       if (tf == 0) {
         if (iterStep > 2) {
-          if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol) {
+          #if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol){
+          if (( funVal[iterStep] - funVal[iterStep - 1] )^2 <= opts$tol){
             break
           }
         }
