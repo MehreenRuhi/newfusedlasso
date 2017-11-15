@@ -336,7 +336,7 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
         }
         pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
-        pens <- lambda2 * sum((b[2:p] - b[1:(p-1)])^2)
+        pens <- lambda2 * sum((b[3:p]-2*b[2:p] + b[1:(p-1)])^2)
         #pens <- lambda2 * sum(abs(b[2:p] - b[1:(p-1)]))
       }
       
