@@ -336,7 +336,7 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
         }
         pens <- lambda2 * fused.pen + lambda.group * group.pen
       } else {
-        pens <- lambda2 * sum((b[3:(p)]-2*b[2:p-1] + b[1:(p-2)])^2)
+        pens <- lambda2 * sum((b[3:(p)]-2*b[2:(p-1)] + b[1:(p-2)])^2)
         #pens <- lambda2 * sum(abs(b[2:p] - b[1:(p-1)]))
       }
       
@@ -549,7 +549,7 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       #funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
        # sum(abs(b)) * lambda + lambda2 * sum(abs( b[2:p] - b[1:(p-1)] ))
       funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
-        sum((b)^2) * lambda + lambda2 * sum(( b[3:p]-2*b[2:p-1] - b[1:(p-2)] )^2)
+        sum((b)^2) * lambda + lambda2 * sum(( b[3:p]-2*b[2:(p-1)] - b[1:(p-2)] )^2)
       if (bFlag) {
         break
       }
