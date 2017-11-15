@@ -559,7 +559,7 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       if (tf == 0) {
         if (iterStep > 2) {
           #if (abs( funVal[iterStep] - funVal[iterStep - 1] ) <= opts$tol){
-          if (( funVal[iterStep] - 2*funVal[iterStep - 1]+funVal[iterStep - 2] )^2 <= opts$tol{
+          if (( funVal[iterStep] - 2*funVal[iterStep - 1]+funVal[iterStep - 2] )^2 <= opts$tol){
           
             break
           }
