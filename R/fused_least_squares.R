@@ -548,7 +548,7 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
       #funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
        # sum(abs(b)) * lambda + lambda2 * sum(abs( b[2:p] - b[1:(p-1)] ))
       funVal[iterStep] <- as.double(crossprod(xby)) / 2 + 
-        sum(abs(b)) * lambda + lambda2 * sum(( b[2:p] - b[1:(p-1)] )^2)
+        sum((b)^2) * lambda + lambda2 * sum(( b[2:p] - b[1:(p-1)] )^2)
       if (bFlag) {
         break
       }
