@@ -136,7 +136,8 @@ fusedLeastR <- function(x, y, lambda, lambda.group = 0, groups = NULL, opts=NULL
   if (opts$init == 0) {
     ## If .init=0, we set x=ratio*x by "initFactor"
     
-    b.norm <- sum(abs(b))
+    b.norm <- sum((b)^2)
+   # b.norm <- sum(abs(b))
     b.2norm <- as.double(crossprod(b))
     
     if (b.norm >= 1e-6) {
