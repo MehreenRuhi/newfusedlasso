@@ -163,7 +163,7 @@ fusedMultinomialLogistic <- function(x, y, lambda,
     if (is.null(opts$fusedPenalty)) {
       lambda2 <- 0
     } else {
-      lambprint da2 <- lambda.max * opts$fusedPenalty
+      lambda2 <- lambda.max * opts$fusedPenalty
     }
     
     rsL2 <- rsL2 * lambda.max
