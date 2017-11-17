@@ -525,5 +525,5 @@ fusedMultinomialLogistic <- function(x, y, lambda,
   }
 
   
-  list(beta = t(beta), intercept = c, funVal = funVal, ValueL = ValueL, bFlag = bFlag)
+  list(beta = t(beta), intercept = c, funVal = funVal, ValueL = ValueL, bFlag = bFlag, lambda.max=lambdamax)
 }
