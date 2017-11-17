@@ -157,9 +157,9 @@ fusedMultinomialLogistic <- function(x, y, lambda,
     }
     
     lambda.max <- max(abs(xTb))
-    print(lamba.max)
+    
     lambda <- lambda * lambda.max
-    print 
+    print(lambda.max)
     if (is.null(opts$fusedPenalty)) {
       lambda2 <- 0
     } else {
