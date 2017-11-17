@@ -132,7 +132,7 @@ fusedMultinomialLogistic <- function(x, y, lambda,
   m1 <- colSums(p.flag * weight)
   m2 <- 1 - m1
   
-  
+  opts$rFlag=0
   ## L1 norm regularization
   if (opts$rFlag != 0) {
     if (lambda < 0 || lambda > 1) {
@@ -524,5 +524,5 @@ fusedMultinomialLogistic <- function(x, y, lambda,
   }
 
   
-  list(beta = t(beta), intercept = c, funVal = funVal, ValueL = ValueL, bFlag = bFlag)
+  list(beta = t(beta), intercept = c, funVal = funVal, ValueL = ValueL, bFlag = bFlag,lambdamax=lambda.max)
 }
